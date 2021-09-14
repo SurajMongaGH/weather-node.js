@@ -9,12 +9,11 @@ const forecast = (latitude, longitude, callback) => {
             callback('Unable to connect to weather services!', undefined)
         } else if (response.body.error) {
             callback('Unable to find location. Try another search.', undefined)
-        }
-        else {
+        } else {
 
-            temp=response.body.current.temp_c
-            chance=response.body.current.cloud
-            callback(undefined, response.body.current.condition.text+" It is currently " + temp + " degrees out, And there is a chance of " + chance + " % rain.")
+            temp = response.body.current.temp_c
+            chance = response.body.current.cloud
+            callback(undefined, response.body.current.condition.text + " It is currently " + temp + " degrees out, And there is a chance of " + chance + " % rain. Last updated on " + response.body.current.last_updated)
         }
 
     })
@@ -22,5 +21,4 @@ const forecast = (latitude, longitude, callback) => {
 }
 
 
-module.exports=forecast
-
+module.exports = forecast
